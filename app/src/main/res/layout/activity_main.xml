@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="menuViewModel"
+            type="ru.tsu.lab4.viewmodel.MenuViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity"
+        android:background="@color/backColor">
+
+        <com.sofakingforever.stars.AnimatedStarsView
+            android:id="@+id/stars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/StarsTheme" />
+
+        <Button
+            android:id="@+id/startGameButton"
+            style="@style/ButtonTheme"
+            android:text="@string/startGame"
+            app:layout_constraintBottom_toTopOf="@+id/storeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/helloAndNameLayout" />
+
+        <Button
+            android:id="@+id/rankingButton"
+            style="@style/ButtonTheme"
+            android:text="@string/ranking"
+            app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storeButton" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            style="@style/ButtonTheme"
+            android:text="@string/settings"
+            app:layout_constraintBottom_toTopOf="@+id/exitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rankingButton" />
+
+        <Button
+            android:id="@+id/storeButton"
+            style="@style/ButtonTheme"
+            android:text="@string/store"
+            app:layout_constraintBottom_toTopOf="@+id/rankingButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startGameButton" />
+
+        <Button
+            android:id="@+id/exitButton"
+            style="@style/ButtonTheme"
+            android:text="@string/exit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo"
+            android:contentDescription="@string/logo" />
+
+        <LinearLayout
+            android:id="@+id/helloAndNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/stars"
+            app:layout_constraintStart_toStartOf="@+id/stars"
+            app:layout_constraintTop_toBottomOf="@+id/logoImage">
+
+            <LinearLayout
+                android:id="@+id/helloTextLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/stars"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoImage">
+
+                <TextView
+                    android:id="@+id/helloText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hello"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp"
+                    android:text="@{menuViewModel.currentPlayer}"
+                    tools:layout_editor_absoluteY="360dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/changeText"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:text="@string/changeName"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

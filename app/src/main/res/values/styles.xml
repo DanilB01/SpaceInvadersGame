@@ -1,0 +1,67 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:fontFamily">@font/cosmic_alien</item>
+    </style>
+
+    <style name="TitleTheme">
+        <item name="android:fontFamily">@font/cosmic_alien</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">42sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/backColor</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="NumberTheme">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">64sp</item>
+    </style>
+
+    <style name="DescriptionTheme">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StarsTheme">
+        <item name="starsView_bigStarThreshold">10dp</item>
+        <item name="starsView_maxStarSize">16dp</item>
+        <item name="starsView_meteoritesColors">@array/meteoritesColors</item>
+        <item name="starsView_meteoritesEnabled">true</item>
+        <item name="starsView_meteoritesInterval">2000</item>
+        <item name="starsView_minStarSize">1dp</item>
+        <item name="starsView_starColors">@array/starColors</item>
+        <item name="starsView_starCount">50</item>
+    </style>
+
+    <style name="SubtitleTheme">
+        <item name="android:fontFamily">@font/cosmic_alien</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

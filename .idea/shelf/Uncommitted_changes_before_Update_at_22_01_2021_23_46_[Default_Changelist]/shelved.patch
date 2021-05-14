@@ -1,0 +1,97 @@
+Index: app/src/main/java/ru/tsu/lab4/NotificationService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4\r\n\r\nimport android.app.*\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.os.Build\r\nimport android.os.IBinder\r\nimport androidx.core.app.NotificationCompat\r\nimport androidx.core.app.NotificationManagerCompat\r\n\r\nclass NotificationService : Service() {\r\n    private val CHANNEL_ID = \"channel_id_example_01\"\r\n    private val notificationId = 101\r\n\r\n    override fun onCreate() {\r\n        super.onCreate()\r\n        createNotificationChannel()\r\n    }\r\n\r\n    override fun onBind(intent: Intent): IBinder? {\r\n        return null\r\n    }\r\n\r\n    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {\r\n        sendNotification()\r\n        return super.onStartCommand(intent, flags, startId)\r\n    }\r\n\r\n    override fun onDestroy() {\r\n        super.onDestroy()\r\n    }\r\n\r\n    private fun createNotificationChannel() {\r\n        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\r\n            val name = \"Notification Title\"\r\n            val descriptionText = \"Notification Description\"\r\n            val importance = NotificationManager.IMPORTANCE_DEFAULT\r\n            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {\r\n                description = descriptionText\r\n            }\r\n            val notificationManager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager\r\n            notificationManager.createNotificationChannel(channel)\r\n        }\r\n    }\r\n\r\n    private fun sendNotification() {\r\n\r\n        val intent = Intent(this, MainActivity::class.java)\r\n        intent.apply {\r\n            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK\r\n        }\r\n        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)\r\n\r\n        val builder = NotificationCompat.Builder(this, CHANNEL_ID)\r\n            .setSmallIcon(R.drawable.space_invaders_icon)\r\n            .setContentTitle(\"Вы давно не заходили в игру\")\r\n            .setContentText(\"Вас уже заждались\")\r\n            .setPriority(NotificationCompat.PRIORITY_DEFAULT)\r\n            .setAutoCancel(true)\r\n            .setContentIntent(pendingIntent)\r\n\r\n        with(NotificationManagerCompat.from(this)) {\r\n            notify(notificationId, builder.build())\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/NotificationService.kt	(revision 84e3e6667ef1663ffd8e407e69b6675a17839bc4)
++++ app/src/main/java/ru/tsu/lab4/NotificationService.kt	(date 1611331087082)
+@@ -1,17 +1,27 @@
+ package ru.tsu.lab4
+ 
+-import android.app.*
++import android.app.NotificationChannel
++import android.app.NotificationManager
++import android.app.PendingIntent
++import android.app.Service
+ import android.content.Context
+ import android.content.Intent
+ import android.os.Build
+ import android.os.IBinder
+ import androidx.core.app.NotificationCompat
+ import androidx.core.app.NotificationManagerCompat
++import java.time.LocalTime
++import java.time.Period
++import java.util.*
++
+ 
+ class NotificationService : Service() {
++
+     private val CHANNEL_ID = "channel_id_example_01"
+     private val notificationId = 101
+ 
++    private var updateNot: Boolean = true
++
+     override fun onCreate() {
+         super.onCreate()
+         createNotificationChannel()
+@@ -22,7 +32,7 @@
+     }
+ 
+     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+-        sendNotification()
++        updateNotification()
+         return super.onStartCommand(intent, flags, startId)
+     }
+ 
+@@ -30,6 +40,18 @@
+         super.onDestroy()
+     }
+ 
++    private fun updateNotification(){
++        var currentDate = Date()
++        while(updateNot){
++            var secondDate = Date()
++            var difDate = (secondDate.time - currentDate.time) / 60000
++            if(difDate >= 1){
++                sendNotification()
++                currentDate = secondDate
++            }
++        }
++    }
++
+     private fun createNotificationChannel() {
+         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+             val name = "Notification Title"
+@@ -44,7 +66,6 @@
+     }
+ 
+     private fun sendNotification() {
+-
+         val intent = Intent(this, MainActivity::class.java)
+         intent.apply {
+             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+Index: app/src/main/java/ru/tsu/lab4/game/Invader.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4.game\r\n\r\nimport android.R.attr.name\r\nimport android.content.Context\r\nimport android.graphics.Bitmap\r\nimport android.graphics.BitmapFactory\r\nimport android.graphics.RectF\r\nimport android.graphics.drawable.Drawable\r\nimport ru.tsu.lab4.R\r\nimport java.util.*\r\n\r\n\r\nclass Invader(context: Context, row: Int, column: Int, screenX: Int, screenY: Int) {\r\n    // How wide, high and spaced out are the invader will be\r\n    var width = screenX / 35f\r\n    private var height = screenY / 35f\r\n    private val padding = screenX / 45\r\n\r\n    var position = RectF(\r\n            column * (width + padding),\r\n            100 + row * (width + padding / 4),\r\n            column * (width + padding) + width,\r\n            100 + row * (width + padding / 4) + height\r\n    )\r\n\r\n    // This will hold the pixels per second speed that the invader will move\r\n    private var speed = 40f\r\n\r\n    private val left = 1\r\n    private val right = 2\r\n\r\n    // Is the ship moving and in which direction\r\n    private var shipMoving = right\r\n\r\n    var isVisible = true\r\n\r\n    companion object {\r\n        // The alien ship will be represented by a Bitmap\r\n        lateinit var bitmap1: Bitmap\r\n        lateinit var bitmap2: Bitmap\r\n\r\n        // keep track of the number of instances\r\n        // that are active\r\n        var numberOfInvaders = 0\r\n    }\r\n\r\n    init {\r\n        // Initialize the bitmaps\r\n        bitmap1 = BitmapFactory.decodeResource(\r\n                context.resources,\r\n                R.drawable.invader1)\r\n\r\n        bitmap2 = BitmapFactory.decodeResource(\r\n                context.resources,\r\n                R.drawable.invader2)\r\n\r\n        // stretch the first bitmap to a size\r\n        // appropriate for the screen resolution\r\n        bitmap1 = Bitmap.createScaledBitmap(\r\n                bitmap1,\r\n                (width.toInt()),\r\n                (height.toInt()),\r\n                false)\r\n\r\n        // stretch the second bitmap as well\r\n        bitmap2 = Bitmap.createScaledBitmap(\r\n                bitmap2,\r\n                (width.toInt()),\r\n                (height.toInt()),\r\n                false)\r\n\r\n        numberOfInvaders ++\r\n    }\r\n\r\n    fun updateObject() {\r\n        if (shipMoving == left) {\r\n            position.left -= speed\r\n        }\r\n\r\n        if (shipMoving == right) {\r\n            position.left += speed\r\n        }\r\n\r\n        position.right = position.left + width\r\n    }\r\n\r\n    fun dropDownAndReverse(waveNumber: Int) {\r\n        shipMoving = if (shipMoving == left) {\r\n            right\r\n        } else {\r\n            left\r\n        }\r\n\r\n        position.top += height\r\n        position.bottom += height\r\n\r\n        // The later the wave, the more the invader speeds up\r\n        speed *=  (1.1f + (waveNumber.toFloat() / 360))\r\n    }\r\n\r\n    fun takeAim(playerShipX: Float,\r\n                playerShipLength: Float,\r\n                waves: Int)\r\n            : Boolean {\r\n\r\n        val generator = Random()\r\n        var randomNumber: Int\r\n\r\n        // If near the player consider taking a shot\r\n        if (playerShipX + playerShipLength > position.left &&\r\n                playerShipX + playerShipLength < position.left + width ||\r\n                playerShipX > position.left && playerShipX < position.left + width) {\r\n\r\n            // The fewer invaders the more each invader shoots\r\n            // The higher the wave the more the invader shoots\r\n            randomNumber = generator.nextInt((100 * numberOfInvaders) / waves)\r\n            if (randomNumber == 0) {\r\n                return true\r\n            }\r\n\r\n        }\r\n\r\n        // If firing randomly (not near the player)\r\n        randomNumber = generator.nextInt(150 * numberOfInvaders)\r\n        return randomNumber == 0\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/game/Invader.kt	(revision 84e3e6667ef1663ffd8e407e69b6675a17839bc4)
++++ app/src/main/java/ru/tsu/lab4/game/Invader.kt	(date 1611332027246)
+@@ -48,11 +48,11 @@
+         // Initialize the bitmaps
+         bitmap1 = BitmapFactory.decodeResource(
+                 context.resources,
+-                R.drawable.invader1)
++                R.drawable.enemy_ship_1)
+ 
+         bitmap2 = BitmapFactory.decodeResource(
+                 context.resources,
+-                R.drawable.invader2)
++                R.drawable.enemy_ship_1)
+ 
+         // stretch the first bitmap to a size
+         // appropriate for the screen resolution

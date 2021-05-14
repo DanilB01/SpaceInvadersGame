@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backColor"
+    android:layout_marginVertical="10dp">
+
+    <TextView
+        android:id="@+id/thirdTextView"
+        android:text="@string/_3"
+        style="@style/NumberTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:text="@string/text_third_level"
+        style="@style/DescriptionTheme"
+        app:layout_constraintBottom_toBottomOf="@+id/thirdTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/thirdTextView"
+        app:layout_constraintTop_toTopOf="@+id/thirdTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

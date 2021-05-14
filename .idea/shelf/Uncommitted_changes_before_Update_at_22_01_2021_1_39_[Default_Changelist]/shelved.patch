@@ -1,0 +1,28 @@
+Index: app/src/main/java/ru/tsu/lab4/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport androidx.lifecycle.MutableLiveData\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\nimport ru.tsu.lab4.game.GameActivity\r\n\r\n//import ru.tsu.lab4.databinding.ActivityMainBinding\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        startService(Intent(this, NotificationService::class.java))\r\n        setContentView(R.layout.activity_main)\r\n\r\n        val sharedPref = SharedPreference(this)\r\n        var playerName = sharedPref.getString(\"playerName\")\r\n        if (playerName == \"\") {\r\n            playerName = \"Anonymous\"\r\n            sharedPref.saveString(\"playerName\", playerName)\r\n        }\r\n        nameText.text = \" $playerName!\"\r\n\r\n        changeText.setOnClickListener {\r\n            startActivity(Intent(this, RenameActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        startGameButton.setOnClickListener {\r\n            startActivity(Intent(this, GameActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        settingsButton.setOnClickListener {\r\n            startActivity(Intent(this, SettingsActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        storeButton.setOnClickListener {\r\n            startActivity(Intent(this, StoreActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        rankingButton.setOnClickListener {\r\n            startActivity(Intent(this, RankingActivity::class.java))\r\n        }\r\n\r\n        //val bindingBlah: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)\r\n        //binding.lifecycleOwner = this\r\n        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)\r\n        //binding.viewModel = viewModel\r\n        //var text = MutableLiveData<String>()\r\n    }\r\n\r\n    override fun onStart() {\r\n        super.onStart()\r\n        stars.onStart()\r\n    }\r\n\r\n    override fun onStop() {\r\n        stars.onStop()\r\n        super.onStop()\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/MainActivity.kt	(revision 7f3b66d234cbdcb79ec2e35a88f0977bfc02836e)
++++ app/src/main/java/ru/tsu/lab4/MainActivity.kt	(date 1611251195318)
+@@ -5,6 +5,8 @@
+ import android.os.Bundle
+ import androidx.lifecycle.MutableLiveData
+ import kotlinx.android.synthetic.main.activity_main.*
++import kotlinx.android.synthetic.main.activity_main.stars
++import kotlinx.android.synthetic.main.activity_settings.*
+ import ru.tsu.lab4.game.GameActivity
+ 
+ //import ru.tsu.lab4.databinding.ActivityMainBinding
+@@ -12,7 +14,9 @@
+ class MainActivity : AppCompatActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
++
+         startService(Intent(this, NotificationService::class.java))
++
+         setContentView(R.layout.activity_main)
+ 
+         val sharedPref = SharedPreference(this)

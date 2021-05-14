@@ -1,0 +1,525 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\"\r\n    android:background=\"@color/backColor\">\r\n\r\n    <com.sofakingforever.stars.AnimatedStarsView\r\n        android:id=\"@+id/stars\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:starsView_bigStarThreshold=\"10dp\"\r\n        app:starsView_maxStarSize=\"16dp\"\r\n        app:starsView_meteoritesColors=\"@array/meteoritesColors\"\r\n        app:starsView_meteoritesEnabled=\"true\"\r\n        app:starsView_meteoritesInterval=\"2000\"\r\n        app:starsView_minStarSize=\"1dp\"\r\n        app:starsView_starColors=\"@array/starColors\"\r\n        app:starsView_starCount=\"50\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/startGameButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"@color/backColor\"\r\n        android:text=\"@string/startGame\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/storeButton\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/helloAndNameLayout\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/ratingButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"@color/backColor\"\r\n        android:text=\"@string/ranking\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/settingsButton\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/storeButton\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/settingsButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"@color/backColor\"\r\n        android:text=\"@string/settings\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/exitButton\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/ratingButton\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/storeButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"@color/backColor\"\r\n        android:text=\"@string/store\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/ratingButton\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/startGameButton\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/exitButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"@color/backColor\"\r\n        android:text=\"@string/exit\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/settingsButton\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/logoImage\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@drawable/logo\" />\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/helloAndNameLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:gravity=\"center\"\r\n        android:orientation=\"vertical\"\r\n        app:layout_constraintEnd_toEndOf=\"@+id/stars\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/stars\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/logoImage\">\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/helloTextLayout\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            app:layout_constraintEnd_toEndOf=\"@+id/stars\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/logoImage\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/helloText\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/hello\"\r\n                android:textColor=\"@color/yellow\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/nameText\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:textColor=\"@color/yellow\"\r\n                android:textSize=\"20sp\"\r\n                tools:layout_editor_absoluteY=\"360dp\" />\r\n\r\n        </LinearLayout>\r\n\r\n        <Button\r\n            android:id=\"@+id/changeText\"\r\n            android:layout_width=\"150dp\"\r\n            android:layout_height=\"30dp\"\r\n            android:background=\"@null\"\r\n            android:text=\"@string/changeName\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"@color/red\"\r\n            android:textSize=\"13sp\" />\r\n\r\n    </LinearLayout>\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/res/layout/activity_main.xml	(date 1611232416028)
+@@ -32,7 +32,8 @@
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/helloAndNameLayout" />
++        app:layout_constraintTop_toBottomOf="@+id/helloAndNameLayout"
++        android:textSize="24sp"/>
+ 
+     <Button
+         android:id="@+id/ratingButton"
+@@ -45,7 +46,8 @@
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/storeButton" />
++        app:layout_constraintTop_toBottomOf="@+id/storeButton"
++        android:textSize="24sp"/>
+ 
+     <Button
+         android:id="@+id/settingsButton"
+@@ -58,7 +60,8 @@
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/ratingButton" />
++        app:layout_constraintTop_toBottomOf="@+id/ratingButton"
++        android:textSize="24sp"/>
+ 
+     <Button
+         android:id="@+id/storeButton"
+@@ -71,7 +74,8 @@
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/startGameButton" />
++        app:layout_constraintTop_toBottomOf="@+id/startGameButton"
++        android:textSize="24sp"/>
+ 
+     <Button
+         android:id="@+id/exitButton"
+@@ -83,7 +87,8 @@
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
++        app:layout_constraintTop_toBottomOf="@+id/settingsButton"
++        android:textSize="24sp"/>
+ 
+     <ImageView
+         android:id="@+id/logoImage"
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"ru.tsu.lab4\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".SettingsActivity\"></activity>\r\n\r\n        <service\r\n            android:name=\".NotificationService\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\" />\r\n\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".RenameActivity\" />\r\n        <activity android:name=\".game.GameActivity\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/AndroidManifest.xml	(date 1611241732870)
+@@ -4,17 +4,18 @@
+ 
+     <application
+         android:allowBackup="true"
+-        android:icon="@mipmap/ic_launcher"
++        android:icon="@mipmap/ic_space_invaders_foreground"
+         android:label="@string/app_name"
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
+-        <activity android:name=".SettingsActivity"></activity>
++        <activity android:name=".StoreActivity"></activity>
++        <activity android:name=".SettingsActivity" />
+ 
+         <service
+             android:name=".NotificationService"
+             android:enabled="true"
+-            android:exported="true" />
++            android:process=":myservice"/>
+ 
+         <activity android:name=".MainActivity">
+             <intent-filter>
+Index: app/src/main/java/ru/tsu/lab4/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport androidx.lifecycle.MutableLiveData\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\nimport ru.tsu.lab4.game.GameActivity\r\n\r\n//import ru.tsu.lab4.databinding.ActivityMainBinding\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n\r\n        val sharedPref = SharedPreference(this)\r\n        var playerName = sharedPref.getString(\"playerName\")\r\n        if (playerName == \"\") {\r\n            playerName = \"Anonymous\"\r\n            sharedPref.saveString(\"playerName\", playerName)\r\n        }\r\n        nameText.text = \" $playerName!\"\r\n\r\n        changeText.setOnClickListener {\r\n            startActivity(Intent(this, RenameActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        startGameButton.setOnClickListener {\r\n            startActivity(Intent(this, GameActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        //val bindingBlah: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)\r\n        //binding.lifecycleOwner = this\r\n        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)\r\n        //binding.viewModel = viewModel\r\n        //var text = MutableLiveData<String>()\r\n    }\r\n\r\n    override fun onStart() {\r\n        super.onStart()\r\n        stars.onStart()\r\n    }\r\n\r\n    override fun onStop() {\r\n        stars.onStop()\r\n        super.onStop()\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/MainActivity.kt	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/java/ru/tsu/lab4/MainActivity.kt	(date 1611240921561)
+@@ -12,6 +12,7 @@
+ class MainActivity : AppCompatActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
++        startService(Intent(this, NotificationService::class.java))
+         setContentView(R.layout.activity_main)
+ 
+         val sharedPref = SharedPreference(this)
+@@ -31,6 +32,16 @@
+             startActivity(Intent(this, GameActivity::class.java))
+             finish()
+         }
++
++        settingsButton.setOnClickListener {
++            startActivity(Intent(this, SettingsActivity::class.java))
++            finish()
++        }
++
++        storeButton.setOnClickListener {
++            startActivity(Intent(this, StoreActivity::class.java))
++            finish()
++        }
+ 
+         //val bindingBlah: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+         //binding.lifecycleOwner = this
+Index: app/src/main/java/ru/tsu/lab4/NotificationService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4\r\n\r\nimport android.app.Service\r\nimport android.content.Intent\r\nimport android.os.IBinder\r\n\r\nclass NotificationService : Service() {\r\n\r\n    override fun onBind(intent: Intent): IBinder {\r\n        TODO(\"Return the communication channel to the service.\")\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/NotificationService.kt	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/java/ru/tsu/lab4/NotificationService.kt	(date 1611246434484)
+@@ -1,12 +1,67 @@
+ package ru.tsu.lab4
+ 
+-import android.app.Service
++import android.app.*
++import android.content.Context
+ import android.content.Intent
++import android.os.Build
+ import android.os.IBinder
++import androidx.core.app.NotificationCompat
++import androidx.core.app.NotificationManagerCompat
+ 
+ class NotificationService : Service() {
++    private val CHANNEL_ID = "channel_id_example_01"
++    private val notificationId = 101
++
++    override fun onCreate() {
++        super.onCreate()
++        createNotificationChannel()
++    }
+ 
+-    override fun onBind(intent: Intent): IBinder {
+-        TODO("Return the communication channel to the service.")
++    override fun onBind(intent: Intent): IBinder? {
++        return null
++    }
++
++    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
++        sendNotification()
++        return super.onStartCommand(intent, flags, startId)
++    }
++
++    override fun onDestroy() {
++        super.onDestroy()
++    }
++
++    private fun createNotificationChannel() {
++        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
++            val name = "Notification Title"
++            val descriptionText = "Notification Description"
++            val importance = NotificationManager.IMPORTANCE_DEFAULT
++            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
++                description = descriptionText
++            }
++            val notificationManager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
++            notificationManager.createNotificationChannel(channel)
++        }
++    }
++
++    private fun sendNotification() {
++
++        val intent = Intent(this, MainActivity::class.java)
++        intent.apply {
++            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
++        }
++        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
++
++        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
++            .setSmallIcon(R.drawable.space_invaders_icon)
++            .setContentTitle("Вы давно не заходили в игру")
++            .setContentText("Вас уже заждались")
++            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
++            .setAutoCancel(true)
++            .setContentIntent(pendingIntent)
++
++        with(NotificationManagerCompat.from(this)) {
++            notify(notificationId, builder.build())
++        }
++
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_rename.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".RenameActivity\"\r\n    android:background=\"@color/backColor\">\r\n\r\n    <com.sofakingforever.stars.AnimatedStarsView\r\n        android:id=\"@+id/stars\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:starsView_bigStarThreshold=\"10dp\"\r\n        app:starsView_maxStarSize=\"16dp\"\r\n        app:starsView_meteoritesColors=\"@array/meteoritesColors\"\r\n        app:starsView_meteoritesEnabled=\"true\"\r\n        app:starsView_meteoritesInterval=\"2000\"\r\n        app:starsView_minStarSize=\"1dp\"\r\n        app:starsView_starColors=\"@array/starColors\"\r\n        app:starsView_starCount=\"50\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/changeNameEditText\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"@string/writeName\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColor=\"@color/white\"\r\n        android:textColorHint=\"@color/white\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/okButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"64dp\"\r\n        android:text=\"@string/ok\"\r\n        android:textColor=\"@color/white\"\r\n        android:background=\"@null\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_rename.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/res/layout/activity_rename.xml	(date 1611232435814)
+@@ -35,7 +35,8 @@
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        app:layout_constraintTop_toTopOf="parent"
++        />
+ 
+     <Button
+         android:id="@+id/okButton"
+@@ -47,5 +48,19 @@
+         android:background="@null"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent" />
++        app:layout_constraintStart_toStartOf="parent"
++        android:textSize="24sp"/>
++
++    <TextView
++        android:id="@+id/textView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="150dp"
++        android:text="Enter your name"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        android:textColor="@color/white"
++        android:textSize="42sp"
++        android:gravity="center"/>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".SettingsActivity\">\r\n\r\n    <com.sofakingforever.stars.AnimatedStarsView\r\n        android:id=\"@+id/stars\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:starsView_bigStarThreshold=\"10dp\"\r\n        app:starsView_maxStarSize=\"16dp\"\r\n        app:starsView_meteoritesColors=\"@array/meteoritesColors\"\r\n        app:starsView_meteoritesEnabled=\"true\"\r\n        app:starsView_meteoritesInterval=\"2000\"\r\n        app:starsView_minStarSize=\"1dp\"\r\n        app:starsView_starColors=\"@array/starColors\"\r\n        app:starsView_starCount=\"50\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_settings.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/res/layout/activity_settings.xml	(date 1611232536412)
+@@ -1,10 +1,12 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".SettingsActivity">
++    tools:context=".SettingsActivity"
++    android:background="@color/backColor">
+ 
+     <com.sofakingforever.stars.AnimatedStarsView
+         android:id="@+id/stars"
+@@ -17,6 +19,116 @@
+         app:starsView_meteoritesInterval="2000"
+         app:starsView_minStarSize="1dp"
+         app:starsView_starColors="@array/starColors"
+-        app:starsView_starCount="50" />
++        app:starsView_starCount="50"
++        tools:layout_editor_absoluteX="-195dp"
++        tools:layout_editor_absoluteY="16dp" />
++
++    <TextView
++        android:id="@+id/settingsTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="120dp"
++        android:text="@string/settings"
++        android:textColor="@color/white"
++        android:textSize="42sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/changeControlTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="60dp"
++        android:text="Change\ncontrol"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
++        android:textColor="@color/white"
++        android:textSize="30sp"
++        android:gravity="center"/>
++
++    <TextView
++        android:id="@+id/volumeTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="50dp"
++        android:text="Music"
++        android:textColor="@color/white"
++        android:textSize="30sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
++
++    <TextView
++        android:id="@+id/notificationTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="50dp"
++        android:text="Send\nnotification"
++        android:textColor="@color/white"
++        android:textSize="30sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/toggleButtonForMusic"
++        android:gravity="center"/>
++
++    <RadioGroup
++        android:id="@+id/radioGroup"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:orientation="horizontal"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/changeControlTextView">
++
++        <RadioButton
++            android:id="@+id/radioButton2"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:buttonTint="@color/white"
++            android:checked="true"
++            android:textSize="18sp"
++            android:text="Use rotation\ncontrol"
++            android:textColor="@color/white"
++            android:layout_marginEnd="5dp"/>
++
++        <RadioButton
++            android:id="@+id/radioButton"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:buttonTint="@color/white"
++            android:text="Use tap\ncontrol"
++            android:textColor="@color/white"
++            android:layout_marginStart="5dp"
++            android:textSize="18sp"/>
++    </RadioGroup>
++
++    <ToggleButton
++        android:id="@+id/toggleButtonForMusic"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:text="OFF"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/volumeTextView"
++        android:background="@drawable/btn_toggle"
++        android:textOn="On"
++        android:textOff="Off"/>
++
++    <ToggleButton
++        android:id="@+id/toggleButtonNotif"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="20dp"
++        android:background="@drawable/btn_toggle"
++        android:text="OFF"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/notificationTextView"
++        android:textOn="On"
++        android:textOff="Off"/>
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext.kotlin_version = \"1.3.72\"\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        maven { url \"http://dl.bintray.com/sofakingforever/libraries\" }\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ build.gradle	(date 1611234879902)
+@@ -4,6 +4,7 @@
+     repositories {
+         google()
+         jcenter()
++        mavenCentral()
+     }
+     dependencies {
+         classpath "com.android.tools.build:gradle:4.0.1"
+@@ -18,6 +19,7 @@
+     repositories {
+         google()
+         jcenter()
++        mavenCentral()
+         maven { url "http://dl.bintray.com/sofakingforever/libraries" }
+     }
+ }
+Index: app/src/main/java/ru/tsu/lab4/SettingsActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.tsu.lab4\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\n\r\nclass SettingsActivity : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_settings)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/ru/tsu/lab4/SettingsActivity.kt	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/java/ru/tsu/lab4/SettingsActivity.kt	(date 1611227989443)
+@@ -2,10 +2,21 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import kotlinx.android.synthetic.main.activity_rename.*
+ 
+ class SettingsActivity : AppCompatActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_settings)
+     }
++
++    override fun onStart() {
++        super.onStart()
++        stars.onStart()
++    }
++
++    override fun onStop() {
++        stars.onStop()
++        super.onStop()
++    }
+ }
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\napply plugin: 'kotlin-android'\r\napply plugin: 'kotlin-android-extensions'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.0\"\r\n\r\n    defaultConfig {\r\n        applicationId \"ru.tsu.lab4\"\r\n        minSdkVersion 26\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n\r\n    buildFeatures {\r\n        dataBinding true\r\n\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version\"\r\n    implementation 'androidx.core:core-ktx:1.3.2'\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    implementation 'com.sofakingforever.libraries:animated-stars-android:1.1.4@aar'\r\n    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'\r\n    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/build.gradle	(date 1611234193694)
+@@ -35,10 +35,12 @@
+     implementation 'androidx.core:core-ktx:1.3.2'
+     implementation 'androidx.appcompat:appcompat:1.2.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
++    implementation 'com.google.android.material:material:1.2.1'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+     implementation 'com.sofakingforever.libraries:animated-stars-android:1.1.4@aar'
+     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
++    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+ }
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ .idea/gradle.xml	(date 1611227652842)
+@@ -15,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"colorPrimary\">#6200EE</color>\r\n    <color name=\"colorPrimaryDark\">#000000</color>\r\n    <color name=\"colorAccent\">#03DAC5</color>\r\n\r\n    <color name=\"starColor1\">#ffffff</color>\r\n    <color name=\"starColor2\">#25ADFF</color>\r\n    <color name=\"starColor3\">#FFC100</color>\r\n    <color name=\"starColor4\">#FF3800</color>\r\n\r\n    <color name=\"surfPlane1\">#01b5ac</color>\r\n    <color name=\"surfPlane2\">#ffd832</color>\r\n    <color name=\"surfPlane3\">#fe7c00</color>\r\n    <color name=\"surfPlane4\">#fe5f97</color>\r\n    <color name=\"surfPlane5\">#0468a6</color>\r\n    <color name=\"surfPlane6\">#cee38e</color>\r\n\r\n    <color name=\"backColor\">#2a1c3c</color>\r\n\r\n    <color name=\"black\">#000000</color>\r\n    <color name=\"white\">#ffffff</color>\r\n    <color name=\"yellow\">#ffe744</color>\r\n    <color name=\"red\">#f12c0b</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ app/src/main/res/values/colors.xml	(date 1611231055184)
+@@ -22,4 +22,7 @@
+     <color name="white">#ffffff</color>
+     <color name="yellow">#ffe744</color>
+     <color name="red">#f12c0b</color>
++
++    <color name="redOrigin">#ff0000</color>
++    <color name="green">#00ff00</color>
+ </resources>
+\ No newline at end of file
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"RemoteRepositoriesConfiguration\">\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"central\" />\r\n      <option name=\"name\" value=\"Maven Central repository\" />\r\n      <option name=\"url\" value=\"https://repo1.maven.org/maven2\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"jboss.community\" />\r\n      <option name=\"name\" value=\"JBoss Community repository\" />\r\n      <option name=\"url\" value=\"https://repository.jboss.org/nexus/content/repositories/public/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"BintrayJCenter\" />\r\n      <option name=\"name\" value=\"BintrayJCenter\" />\r\n      <option name=\"url\" value=\"https://jcenter.bintray.com/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"Google\" />\r\n      <option name=\"name\" value=\"Google\" />\r\n      <option name=\"url\" value=\"https://dl.google.com/dl/android/maven2/\" />\r\n    </remote-repository>\r\n    <remote-repository>\r\n      <option name=\"id\" value=\"maven\" />\r\n      <option name=\"name\" value=\"maven\" />\r\n      <option name=\"url\" value=\"http://dl.bintray.com/sofakingforever/libraries\" />\r\n    </remote-repository>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jarRepositories.xml	(revision 2415f75f7ed1a8ffe8aba4f4930907bfac367466)
++++ .idea/jarRepositories.xml	(date 1611234883434)
+@@ -26,5 +26,10 @@
+       <option name="name" value="maven" />
+       <option name="url" value="http://dl.bintray.com/sofakingforever/libraries" />
+     </remote-repository>
++    <remote-repository>
++      <option name="id" value="MavenRepo" />
++      <option name="name" value="MavenRepo" />
++      <option name="url" value="https://repo.maven.apache.org/maven2/" />
++    </remote-repository>
+   </component>
+ </project>
+\ No newline at end of file

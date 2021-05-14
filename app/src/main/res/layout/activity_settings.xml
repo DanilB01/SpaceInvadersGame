@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="settingViewModel"
+            type="ru.tsu.lab4.viewmodel.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.SettingsActivity"
+        android:background="@color/backColor">
+
+    <com.sofakingforever.stars.AnimatedStarsView
+        android:id="@+id/stars"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/StarsTheme"
+        tools:layout_editor_absoluteX="-195dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/settingsTextView"
+                style="@style/TitleTheme"
+                android:layout_marginTop="64dp"
+                android:text="@string/settings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/changeControlTextView"
+                style="@style/SubtitleTheme"
+                android:layout_marginTop="32dp"
+                android:text="@string/change_control"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/changeControlTextView">
+
+                    <RadioButton
+                        android:id="@+id/rotationRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:buttonTint="@color/white"
+                        android:checked="@={settingViewModel.isRotationControl}"
+                        android:text="Use rotation\ncontrol"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/tapRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:buttonTint="@color/white"
+                        android:checked="@={settingViewModel.isTapControl}"
+                        android:text="Use tap\ncontrol"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </RadioGroup>
+
+            <TextView
+                android:id="@+id/volumeTextView"
+                style="@style/SubtitleTheme"
+                android:layout_marginTop="50dp"
+                android:text="@string/music"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonForMusic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_toggle"
+                android:text="@string/off"
+                android:textOff="@string/off_two"
+                android:textOn="@string/on"
+                android:checked="@={settingViewModel.isMusic}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/volumeTextView" />
+
+            <TextView
+                android:id="@+id/notificationTextView"
+                style="@style/SubtitleTheme"
+                android:layout_marginTop="50dp"
+                android:text="Send\nnotification"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonForMusic" />
+
+            <ToggleButton
+                android:id="@+id/toggleButtonNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_toggle"
+                android:text="@string/off"
+                android:textOff="@string/off_two"
+                android:textOn="@string/on"
+                android:checked="@={settingViewModel.isNotifications}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notificationTextView" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="@style/ButtonTheme"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/save"
+                android:onClick="@{() -> settingViewModel.saveSettings()}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

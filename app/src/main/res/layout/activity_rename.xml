@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="renameViewModel"
+            type="ru.tsu.lab4.viewmodel.RenameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.RenameActivity"
+        android:background="@color/backColor">
+
+        <com.sofakingforever.stars.AnimatedStarsView
+            android:id="@+id/stars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/StarsTheme" />
+
+        <EditText
+            android:id="@+id/changeNameEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="@string/writeName"
+            android:text="@={renameViewModel.currentPlayer}"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/okButton"
+            style="@style/ButtonTheme"
+            android:layout_marginBottom="64dp"
+            android:text="@string/ok"
+            android:onClick="@{() -> renameViewModel.changePlayerName()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TitleTheme"
+            android:text="@string/enter_your_name"
+            app:layout_constraintBottom_toTopOf="@+id/changeNameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

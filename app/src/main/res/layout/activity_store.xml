@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="storeViewModel"
+            type="ru.tsu.lab4.viewmodel.StoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.StoreActivity"
+        android:background="@color/backColor">
+
+        <com.sofakingforever.stars.AnimatedStarsView
+            android:id="@+id/stars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:starsView_bigStarThreshold="10dp"
+            app:starsView_maxStarSize="16dp"
+            app:starsView_meteoritesColors="@array/meteoritesColors"
+            app:starsView_meteoritesEnabled="true"
+            app:starsView_meteoritesInterval="2000"
+            app:starsView_minStarSize="1dp"
+            app:starsView_starColors="@array/starColors"
+            app:starsView_starCount="50" />
+
+        <TextView
+            android:id="@+id/storeTexView"
+            style="@style/TitleTheme"
+            android:layout_marginTop="64dp"
+            android:text="@string/store"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/coinsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storeTexView">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/money" />
+
+            <TextView
+                android:id="@+id/xText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center"
+                android:text="@string/x"
+                android:textColor="@color/white"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/moneyTexView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{storeViewModel.currentMoney.toString()}"
+                android:textColor="@color/white"
+                android:textSize="42sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buyButton"
+            style="@style/ButtonTheme"
+            android:layout_marginBottom="36dp"
+            android:text="@string/buy"
+            android:onClick="@{() -> storeViewModel.buyNewShip()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/buyButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coinsLayout">
+
+            <ru.tsu.lab4.HorizontalCarouselRecyclerView
+                android:id="@+id/itemList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
